@@ -66,9 +66,15 @@ namespace KSPSerialIODebugTool
 		public byte TotalStage;     //52  TotalNumber of stages
         public float TargetDist;    //53  Distance to targeted vessel (m)
         public float TargetV;       //54  Target vessel relative velocity
+        public byte NavballSASMode; //55  Combined byte for navball target mode and SAS mode
+        // First four bits indicate AutoPilot mode:
+        // 0 SAS is off  //1 = Regular Stability Assist //2 = Prograde
+        // 3 = RetroGrade //4 = Normal //5 = Antinormal //6 = Radial In
+        // 7 = Radial Out //8 = Target //9 = Anti-Target //10 = Maneuver node
+        // Last 4 bits set navball mode. (0=ignore,1=ORBIT,2=SURFACE,3=TARGET)
     }
 
-	[StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
 	public struct HandShakePacket
 	{
 		public byte id;
